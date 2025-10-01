@@ -181,8 +181,8 @@
         let assignPercent = 20;
 
         let quiz = parseFloat(document.getElementById("bsQuiz").value) || 0;
-        let quizWeighted = (quiz / 30) * 30 * 0.30; 
-        let quizPercent = 30;
+        let quizWeighted = quiz; // ✅ Direct add full marks
+        let quizPercent = 30;   // Show percentage only for format
 
         let paper = parseFloat(document.getElementById("bsPaper").value) || 0;
         let paperWeighted = paper * 0.50;
