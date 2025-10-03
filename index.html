@@ -1,59 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>AIOU Result Calculator - Free Online Tool</title>
+  <meta name="description" content="Free AIOU result calculator. Calculate your marks easily for Matric, FA, BA, BS, B.Ed, ADE, BBA students. Simple & fast online tool.">
+  <meta name="keywords" content="AIOU result calculator, Allama Iqbal Open University, AIOU marks calculator, online result calculator">
+  <meta name="author" content="Zeeshan">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AIOU Result Calculator</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Roboto', sans-serif;
       background: #f8fdf8;
-      padding: 20px;
+      padding: 0;
+      margin: 0;
     }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 20px;
+      background: #ffffff;
+      border-bottom: 2px solid #ccc;
+    }
+    header img {
+      max-height: 80px;
+      display: block;
+      margin: auto;
+    }
+    header h1 {
+      color: #006400;
+      margin-top: 10px;
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .separator {
+      width: 100px;
+      height: 3px;
+      background: #006400;
+      margin: 15px auto;
+      border-radius: 2px;
+    }
+
+    /* Calculator Box */
     .container {
       max-width: 900px;
-      margin: auto;
-      background: white;
-      padding: 20px;
-      border: 3px solid green;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-    h2 {
-      text-align: center;
-      color: green;
-      margin-bottom: 20px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 25px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
     }
     label {
-      font-weight: bold;
+      font-weight: 600;
       margin-top: 10px;
       display: block;
+      color: #333;
     }
     input, select {
       padding: 8px;
       width: 100%;
       margin-top: 5px;
       margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: #006400;
+      box-shadow: 0 0 5px rgba(0,100,0,0.3);
     }
     button {
-      background: green;
+      background: #006400;
       color: white;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border: none;
+      border-radius: 5px;
       cursor: pointer;
       font-size: 16px;
+      font-weight: 600;
+      display: inline-block;
+      transition: background 0.3s ease;
     }
     button:hover {
-      background: darkgreen;
+      background: #004d00;
     }
+
+    /* Result Card */
     .result-card {
-      border: 2px solid green;
+      border: 2px solid #006400;
       padding: 20px;
       margin-top: 20px;
       background: #fff;
+      border-radius: 6px;
     }
     .result-card h3 {
       text-align: center;
-      color: green;
+      color: #006400;
       margin-bottom: 15px;
       text-decoration: underline;
     }
@@ -64,23 +112,93 @@
       margin-bottom: 10px;
     }
     th, td {
-      border: 1px solid green;
+      border: 1px solid #006400;
       padding: 8px;
       text-align: center;
     }
     th {
-      background: #e6ffe6;
+      background: #e6f3e6;
     }
     .final-row {
-      background: #c6f7c6;
+      background: #c6ecc6;
       font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #f5f5f5;
+      font-size: 14px;
+      color: #666;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #888;
+      margin: 0 8px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    footer .dev-info {
+      margin-top: 10px;
+      color: #006400;
+      font-weight: 600;
+    }
+
+    /* Modal (Popup) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 100px;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+    .modal-content {
+      background: #fff;
+      margin: auto;
+      padding: 20px;
+      border: 2px solid #006400;
+      width: 70%;
+      border-radius: 8px;
+      animation: fadeIn 0.3s;
+    }
+    .modal h2 {
+      color: #006400;
+      margin-top: 0;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #000;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Allama Iqbal Open University Islamabad</h2>
 
+  <!-- ===== Header Section ===== -->
+  <header>
+    <img src="images/aiou-logo.png" alt="AIOU Logo">
+    <h1>Allama Iqbal Open University Islamabad</h1>
+    <div class="separator"></div>
+  </header>
+
+  <!-- ===== Calculator Section ===== -->
+  <div class="container">
     <label for="class">Select Class:</label>
     <select id="class" onchange="toggleInputs()">
       <option value="">--Select--</option>
@@ -122,6 +240,42 @@
     </div>
   </div>
 
+  <!-- ===== Footer Section ===== -->
+  <footer>
+    <a onclick="openModal('aboutModal')">About Us</a> | 
+    <a onclick="openModal('termsModal')">Terms of Use</a> | 
+    <a onclick="openModal('privacyModal')">Privacy Policy</a>
+    <div class="dev-info">
+      Developed by: Zeeshan (AIOU Help) | Contact: 0304-0571214
+    </div>
+  </footer>
+
+  <!-- ===== Modals (Detail Pages in Popup) ===== -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('aboutModal')">&times;</span>
+      <h2>About Us</h2>
+      <p>This AIOU Result Calculator is a free online tool designed to help students of Allama Iqbal Open University easily calculate their results. It supports Matric, FA, BA, BS, B.Ed, ADE, and BBA programs. Our mission is to provide students with a simple, accurate and user-friendly platform.</p>
+    </div>
+  </div>
+
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('termsModal')">&times;</span>
+      <h2>Terms of Use</h2>
+      <p>By using this calculator, you agree that this tool is provided for educational assistance only. We are not responsible for any errors, official results may vary from this calculation. Always verify with AIOU official sources.</p>
+    </div>
+  </div>
+
+  <div id="privacyModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('privacyModal')">&times;</span>
+      <h2>Privacy Policy</h2>
+      <p>We respect your privacy. This calculator does not collect or store any personal information. All inputs are processed locally in your browser and no data is shared with third parties.</p>
+    </div>
+  </div>
+
+  <!-- ===== Script Section ===== -->
   <script>
     function toggleInputs() {
       const selectedClass = document.getElementById("class").value;
@@ -181,8 +335,8 @@
         let assignPercent = 20;
 
         let quiz = parseFloat(document.getElementById("bsQuiz").value) || 0;
-        let quizWeighted = quiz; // ✅ Direct add full marks
-        let quizPercent = 30;   // Show percentage only for format
+        let quizWeighted = quiz; 
+        let quizPercent = 30;
 
         let paper = parseFloat(document.getElementById("bsPaper").value) || 0;
         let paperWeighted = paper * 0.50;
@@ -204,123 +358,22 @@
       document.getElementById("resultDetails").innerHTML = tableHTML;
       document.getElementById("resultCard").style.display = "block";
     }
+
+    // Modal Functions
+    function openModal(id) {
+      document.getElementById(id).style.display = "block";
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
+    }
+    window.onclick = function(event) {
+      let modals = document.getElementsByClassName("modal");
+      for (let i = 0; i < modals.length; i++) {
+        if (event.target == modals[i]) {
+          modals[i].style.display = "none";
+        }
+      }
+    }
   </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - AIOU Result Calculator</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f9fff9; }
-    h2 { color: green; }
-  </style>
-</head>
-<body>
-  <!-- ====== Footer Section ====== -->
-<footer style="text-align:center; margin-top:30px; padding:15px; background:#f0f0f0; font-size:14px; color:#333;">
-  <a href="javascript:void(0)" onclick="openModal('aboutModal')">About Us</a> | 
-  <a href="javascript:void(0)" onclick="openModal('termsModal')">Terms of Use</a> | 
-  <a href="javascript:void(0)" onclick="openModal('privacyModal')">Privacy Policy</a>
-  <br><br>
-  © 2025 AIOU Result Calculator <br>
-  <span style="color:green; font-weight:bold;">Developed by: Zeeshan AIOU Help | Mobile: 03040571214</span>
-</footer>
-
-<!-- ====== Modals ====== -->
-<div id="aboutModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('aboutModal')">&times;</span>
-    <h2>About Us</h2>
-    <p>
-      The AIOU Result Calculator is a simple tool designed to help students of 
-      Allama Iqbal Open University calculate their final results based on assignments, 
-      quizzes, and paper marks. Our aim is to make result calculation easier, accurate, 
-      and accessible for all AIOU students.
-    </p>
-  </div>
-</div>
-
-<div id="termsModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('termsModal')">&times;</span>
-    <h2>Terms of Use</h2>
-    <p>
-      This calculator is developed for educational purposes only. While every effort 
-      is made to ensure accuracy, the final official result is subject to the 
-      Allama Iqbal Open University’s announcement. By using this calculator, 
-      you agree that we are not responsible for any discrepancies between the 
-      calculated and official results.
-    </p>
-  </div>
-</div>
-
-<div id="privacyModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('privacyModal')">&times;</span>
-    <h2>Privacy Policy</h2>
-    <p>
-      The AIOU Result Calculator does not collect or store any personal information 
-      from users. All data entered (assignments, quiz, paper marks) remains only 
-      on your device and is not saved or shared with anyone.
-    </p>
-  </div>
-</div>
-
-<!-- ====== Modal CSS ====== -->
-<style>
-  .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 1000; 
-    left: 0; top: 0; 
-    width: 100%; height: 100%; 
-    background: rgba(0,0,0,0.6);
-  }
-  .modal-content {
-    background: #fff;
-    margin: 10% auto;
-    padding: 20px;
-    border: 2px solid green;
-    width: 60%;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    font-family: Arial, sans-serif;
-  }
-  .modal-content h2 {
-    color: green;
-    margin-bottom: 15px;
-    text-align: center;
-    text-decoration: underline;
-  }
-  .modal-content p {
-    text-align: justify;
-    line-height: 1.6;
-  }
-  .close {
-    float: right;
-    font-size: 24px;
-    cursor: pointer;
-    color: red;
-  }
-  .close:hover {
-    color: darkred;
-  }
-</style>
-
-<!-- ====== Modal Script ====== -->
-<script>
-  function openModal(id) {
-    document.getElementById(id).style.display = "block";
-  }
-  function closeModal(id) {
-    document.getElementById(id).style.display = "none";
-  }
-  window.onclick = function(event) {
-    document.querySelectorAll('.modal').forEach(function(modal) {
-      if (event.target == modal) modal.style.display = "none";
-    });
-  }
-</script>
